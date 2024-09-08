@@ -12,7 +12,7 @@ def transcrever_audio(arquivo_audio):
             return texto
         except sr.UnknownValueError:
             print("Não foi possível entender o áudio.")
-        except sr.RequestError:
-            print("Erro ao se conectar ao serviço de reconhecimento de fala.")
-
-transcricao = transcrever_audio("audio_message.wav")
+            return None
+        except sr.RequestError as e:
+            print(f"Erro ao se conectar ao serviço de reconhecimento de fala: {e}")
+            return None
